@@ -1,0 +1,66 @@
+﻿<Window x:Class="JawMovementTool.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+    Title="MainWindow" Height="526.044" Width="702.65" Closing="Window_Closing" KeyDown="Window_KeyDown">
+    <DockPanel LastChildFill="True">
+        <Menu Height="Auto" DockPanel.Dock="Top">
+            <MenuItem Header="Plik">
+                <MenuItem x:Name="btnSave" Background="Transparent" Header="Zapisz wyniki" Click="save_Click"/>
+                <MenuItem x:Name="btnRead" Background="Transparent" Header="Wczytaj wyniki" Click="btnRead_Click"/>              
+            </MenuItem>
+            <Button x:Name="test" Content="Testuj" Click="test_Click" Visibility="Hidden"/>
+        </Menu>
+        <Grid DockPanel.Dock="Top" Height="250">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
+
+            <helix:HelixViewport3D x:Name="view1" CameraRotationMode="Turnball" ModelUpDirection="0,0,1" Grid.Column="1" ShowViewCube="False" EnableCurrentPosition="True" IsTouchZoomEnabled="False" IsChangeFieldOfViewEnabled="False" Margin="1,0,-1,0" IsHeadLightEnabled="True" IsManipulationEnabled="True">
+
+                <helix:DefaultLights/>
+                <ModelVisual3D Content="{Binding CurrentModel}"/>
+            </helix:HelixViewport3D>
+            <Button x:Name="btnStart" Content="Rozpocznij pomiary" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Height="40" Click="btnStart_Click"/>
+            <Button x:Name="btnCharts" Content="Wykresy" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Height="40" Margin="0,0,0,45" Click="btnCharts_Click"/>
+            <Button x:Name="btnBack" Content="Reset" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="25" Margin="200,0,0,0" IsEnabled="False" Click="btnBack_Click"/>
+            <Button x:Name="btnNext" Content="Dalej" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Height="25" Margin="300,0,0,0" IsEnabled="False" Click="btnNext_Click"/>
+            <GroupBox Header="Status markerów" HorizontalAlignment="Left" VerticalAlignment="Top" Height="143" Width="446" Grid.ColumnSpan="2" Margin="1,0,0,0">
+                <Grid>
+                    <Label Content="Marker czaszki (kanał 1):" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="161"/>
+                    <Label Content="Marker żuchwy (kanał 2):" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Width="161"/>
+                    <Label Content="Wskaźnik (kanał 3):" HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top" Width="161"/>
+                    <Label x:Name="lblSkullVisivility" Content="niewidoczny" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Background="#FFFF0404"/>
+                    <Label x:Name="lblJawVisibility" Content="niewidoczny" HorizontalAlignment="Left" Margin="210,35,0,0" VerticalAlignment="Top" Background="#FFFF0404"/>
+                    <Label x:Name="lblMarkerVisibility" Content="niewidoczny" HorizontalAlignment="Left" Margin="210,60,0,0" VerticalAlignment="Top" Background="#FFFF0404"/>
+                    <Label x:Name="lblPointer" Content="Wzkazany punkt:" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="161"/>
+                    <Label x:Name="lblPointerPoint" Content="oczekuje" HorizontalAlignment="Left" Margin="210,86,0,0" VerticalAlignment="Top" Background="#FFFFC004" RenderTransformOrigin="0.527,0.688"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <StatusBar x:Name="statusBar" Height="30" DockPanel.Dock="Bottom">
+            <CheckBox x:Name="cClicked" Content="klik" Visibility="Hidden"/>
+        </StatusBar>
+
+        <Grid>
+
+            <TreeView x:Name="tvStepList" HorizontalAlignment="Left" Width="371" Margin="0,0,0,0.2">
+                <CheckBox Content="Umieszczenie referencji"/>
+                <CheckBox Content="Punkt środkowy dolnej krawędzi żuchwy"/>
+                <CheckBox Content="Węzidełko wargi dolnej"/>
+                <CheckBox Content="Węzidełko wargi górnej"/>
+                <CheckBox Content="Nasion"/>
+                <CheckBox Content="Czubek czaszki"/>
+
+                <CheckBox Content="Pomiar ruchomości"/>
+            </TreeView>
+            <GroupBox Header="" HorizontalAlignment="Left" Margin="371,0,0,0" VerticalAlignment="Top" Height="199" Width="325">
+                <TextBox x:Name="txtHint" HorizontalAlignment="Stretch"  Margin="0,0,-3,-0.2" TextWrapping="Wrap" Text="Naciśnij przycisk 'Rozpocznj pomiary'" FontSize="20" FontWeight="Bold" TextAlignment="Center" />
+            </GroupBox>
+
+
+        </Grid>
+
+    </DockPanel>
+</Window>

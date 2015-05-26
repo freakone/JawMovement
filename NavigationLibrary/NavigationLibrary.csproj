@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{DC8A9804-326A-4787-B21F-A2A6F422F796}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>NavigationLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MathCommon">
+      <HintPath>E:\Dropbox\MAgisterka\NavigationTest\libs\MathCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NavigationLibrary\Device.cs" />
+    <Compile Include="NavigationLibrary\DeviceCommandOptions.cs" />
+    <Compile Include="NavigationLibrary\DeviceCommands.cs" />
+    <Compile Include="NavigationLibrary\DeviceKinds.cs" />
+    <Compile Include="NavigationLibrary\DeviceMarkerStatus.cs" />
+    <Compile Include="NavigationLibrary\DeviceResponces.cs" />
+    <Compile Include="NavigationLibrary\DeviceResponseVerificationMode.cs" />
+    <Compile Include="NavigationLibrary\DeviceSettings.cs" />
+    <Compile Include="NavigationLibrary\DeviceUpdateWorkingModes.cs" />
+    <Compile Include="NavigationLibrary\INavigationControl.cs" />
+    <Compile Include="NavigationLibrary\IOptoToolBaseInfo.cs" />
+    <Compile Include="NavigationLibrary\IToolInfo.cs" />
+    <Compile Include="NavigationLibrary\MarkerInfo.cs" />
+    <Compile Include="NavigationLibrary\MarkersPositionEventArgs.cs" />
+    <Compile Include="NavigationLibrary\Navigation.cs" />
+    <Compile Include="NavigationLibrary\NavigationErrorCodes.cs" />
+    <Compile Include="NavigationLibrary\NavigationHelper.cs" />
+    <Compile Include="NavigationLibrary\NavigationInitDeviceConfigs.cs" />
+    <Compile Include="NavigationLibrary\NavigationInitializationCompleteEventArgs.cs" />
+    <Compile Include="NavigationLibrary\NavigationInitKinds.cs" />
+    <Compile Include="NavigationLibrary\NavigationSettings.cs" />
+    <Compile Include="NavigationLibrary\ToolInfo.cs" />
+    <Compile Include="NavigationLibrary\ToolInfoMarkerSelectioKinds.cs" />
+    <Compile Include="NavigationLibrary\ToolsPositionEventArgs.cs" />
+    <Compile Include="NavigationLibrary\UpdateBackgroudWorker.cs" />
+    <Compile Include="NavigationLibrary\WirelessMarkerInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
